@@ -53,7 +53,7 @@ print("")
 
 # Load data
 print("Loading data...")
-positive_data_file, negative_data_file = get_lable_corpus_file_name(FLAGS.labels)
+positive_data_file, negative_data_file = get_lable_corpus_file_name(FLAGS.label)
 x_text, y = data_helpers.load_data_and_labels(positive_data_file, negative_data_file)
 
 # Build vocabulary
