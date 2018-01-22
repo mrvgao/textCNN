@@ -25,7 +25,7 @@ def get_lable_corpus_file_name(label):
         os.mkdir(dir)
 
     print(dir)
-    return '{}/positive.txt'.format(dir), '{}/negative.txt'.format(label)
+    return '{}/positive.txt'.format(dir), '{}/negative.txt'.format(dir)
 
 
 def write_one_train_corpus(label):
