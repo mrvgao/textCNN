@@ -9,6 +9,7 @@ import data_helpers
 from text_cnn import TextCNN
 from tensorflow.contrib import learn
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '5,6'
 # Parameters
 # ==================================================
 
