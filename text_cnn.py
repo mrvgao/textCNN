@@ -27,12 +27,19 @@ class TextCNN(object):
             self.embedded_chars = tf.nn.embedding_lookup(self.W, self.input_x)
             self.embedded_chars_expanded = tf.expand_dims(self.embedded_chars, -1)
 
+        # with tf.name_scope('concated_with_tf_idf'):
+        #     self.x_tf_idf = tf.placeholder(tf.int32, [None, tf_idf_length], name='tf_idf_vector')
+
+            # self.X = tf.concat(self.embedded_chars_expanded, self.x_tf_idf, axis=1, name='concated_x')
+
         # Create a convolution + maxpool layer for each filter size
         pooled_outputs = []
         for i, filter_size in enumerate(filter_sizes):
             with tf.name_scope("conv-maxpool-%s" % filter_size):
                 # Convolution Layer
                 filter_shape = [filter_size, embedding_size, 1, num_filters]
+                # filter_shape is [filter_height, filter_width, in_channel, out_channel]
+                # conv2d input is [batch, in_height, in_width, in_channels]
                 W = tf.Variable(tf.truncated_normal(filter_shape, stddev=0.1), name="W")
                 b = tf.Variable(tf.constant(0.1, shape=[num_filters]), name="b")
                 conv = tf.nn.conv2d(
@@ -47,6 +54,7 @@ class TextCNN(object):
                 pooled = tf.nn.max_pool(
                     h,
                     ksize=[1, sequence_length - filter_size + 1, 1, 1],
+                    # window size for [batch, height, width, channels]
                     strides=[1, 1, 1, 1],
                     padding='VALID',
                     name="pool")
