@@ -24,11 +24,12 @@ def get_lable_corpus_file_name(label):
     if not os.path.exists(dir):
         os.mkdir(dir)
 
+    print(dir)
     return '{}/positive.txt'.format(dir), '{}/negative.txt'.format(label)
 
 
 def write_one_train_corpus(label):
-    original_content = pd.read_csv('data/train.csv')
+    original_content = pd.read_csv('data/toxic_src/train.csv')
 
     labeled_data = original_content[label].tolist()
     black_indices = np.nonzero(np.array(labeled_data) == 1)[0].tolist()
