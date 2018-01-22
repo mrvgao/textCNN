@@ -10,7 +10,7 @@ from text_cnn import TextCNN
 from tensorflow.contrib import learn
 from pre_procsessing_data_corpus import get_lable_corpus_file_name
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '3, 4, 5, 6'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1, 2, 3, 4, 5, 6'
 # Parameters
 # ==================================================
 
